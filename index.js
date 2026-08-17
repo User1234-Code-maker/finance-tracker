@@ -1,13 +1,14 @@
-let balance = 1000;
+let balance = 750;
+let expenses = [250, 100, 150];
 
-const expenses = [
-    { name: "coffee", price: 100 },
-    { name: "tea", price: 200 },
-    { name: "bread", price: 300 }
-];
+for(let i = 0; i < expenses.length; i++) {
 
-for (let i = 0; i < expenses.length; i++) {
-    balance -= expenses[i].price;
-};
-
-console.log(balance);
+if(expenses[i] <= balance) {
+    balance -= expenses[i];
+    console.log("Потрачено:" , expenses[i]);   
+    console.log("Осталось:" , balance);
+} else {
+    console.log("не хватает"); 
+    console.log("Осталось:" , balance);
+    }
+}
