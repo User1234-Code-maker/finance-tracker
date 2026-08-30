@@ -1,14 +1,53 @@
-let balance = 750;
-let expenses = [250, 100, 150];
+let expenses = [
+    {
+        amount: 500,
+        category: "Food",
+    },
+    {
+        amount: 300,
+        category: "transport",
+    },
+    {
+        amount: 1200,
+        category: "rent",
+    }
+];
 
-for(let i = 0; i < expenses.length; i++) {
+let total = 0;
+let balance = 5000;
+for (let expense of expenses) {
+    total += expense.amount;
+    balance -= expense.amount;
+    console.log(expense.amount);
+    console.log(expense.category);
+    console.log(total);
+    console.log(balance);
+}
 
-if(expenses[i] <= balance) {
-    balance -= expenses[i];
-    console.log("Потрачено:" , expenses[i]);   
-    console.log("Осталось:" , balance);
-} else {
-    console.log("не хватает"); 
-    console.log("Осталось:" , balance);
+if (balance >= 0) {
+    console.log("Денег достаточно");
+} else { 
+    console.log("Денег не достаточно");
+}
+
+function calculateTotal(expenses) {
+    let total = 0;
+    for (let expense of expenses) {
+        total += expense.amount;
+    }
+    return total;
+}
+
+calculateTotal(expenses);
+console.log(calculateTotal(expenses));
+
+function getBalanceStatus(balance) {
+    if (balance >= 0) {
+        return "Денег достаточно";
+    } else {
+        return "Денег не достаточно"
     }
 }
+
+getBalanceStatus(balance);
+console.log(getBalanceStatus(balance));
